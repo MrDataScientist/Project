@@ -1,0 +1,26 @@
+{% extends 'myapp/base.html' %}
+
+{% block content_block %}
+	<div class="container">
+		<h1>Site Details - Demo Site</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<td><strong>Date</strong></td>
+					<td><strong>A Value</strong></td>
+					<td><strong>B Value</strong></td>
+				</tr>
+			</thead>
+				<tbody>
+				{% for Site_value in site.site_value_set.all %}
+					<tr>
+						<td>{{ Site_value.date | date:"DATE_FORMAT" }}</td>
+						<td>{{ Site_value.A_value | floatformat:2 }}</td>
+						<td>{{ Site_value.B_value | floatformat:2 }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

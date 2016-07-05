@@ -1,0 +1,17 @@
+{% extends 'myapp/base.html' %}
+{% block content_block %}
+
+	<div class="container">
+        <h1>Sites</h1>
+		{% if site_list %}
+			<ul class="list-group">
+				{% for site in site_list %}
+					<li class="list-group-item">
+						<a href="{% url 'myapp:detail' site.id %}">{{ site.title }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+		{% endif %}
+    </div>
+{% endblock %}

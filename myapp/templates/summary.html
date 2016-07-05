@@ -1,0 +1,38 @@
+{% extends 'myapp/base.html' %}
+{% block content_block %}
+
+	<div class="container">
+        <h1>Summary</h1>
+		{% if site_list %}
+		<a href="{% url 'myapp:summary' %}">
+			<button type="button" class="btn btn-primary 
+				{% if request.resolver_match.url_name == 'summary' %}active{% endif %}">Sum</button>
+		</a>
+		<a href="{% url 'myapp:average' %}">
+			<button type="button" class="btn btn-primary 
+				{% if request.resolver_match.url_name == 'average' %}active{% endif %}">Average</button>
+		</a>
+
+        <table class="table">
+			<thead>
+				<tr>
+					<td><strong>Site</strong></td>
+					<td><strong>A Value</strong></td><td><strong>B Value</strong></td>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for site in site_list %}
+					<tr>
+						<td>{{ site.title }}</td>
+						<td>{{ site.sum_A_value | floatformat:2 }}</td>
+						<td>{{ site.sum_B_value | floatformat:2 }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		{% else %}
+		{% endif %}
+    </div>
+{% endblock %}
