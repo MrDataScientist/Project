@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>3MW Application Task</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    </head>
+
+    <body>
+		<header>
+			<nav class="navbar navbar-default">
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="{% if request.resolver_match.url_name == 'index' or request.resolver_match.url_name == 'detail' %}active{% endif %}">
+							<a href="{% url 'myapp:index' %}">Sites</a>
+						</li>
+						<li class="{% if request.resolver_match.url_name == 'summary' or request.resolver_match.url_name == 'average' %}active{% endif %}">
+							<a href="{% url 'myapp:summary' %}">Summary</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<main>
+			{% block content_block %}{% endblock %}
+		</main>
+    </body>
+</html>
